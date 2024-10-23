@@ -9,7 +9,10 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Math.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Math" startnode="1" creator="Twine" creator-version="2.9.2" format="Harlowe" format-version="3.3.9" ifid="12C108DC-4BEC-4ABB-AE3D-0E7A995D41D3" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Untitled Passage" tags="" position="700,275" size="100,100">Thank you for agreeing to participate in this experiment. On the following page, you will be given math questions to answer. Please answer as many questions as you would like. The more questions you answer, the more accurate of a data sample we can collect. Please enter your name below, and click &quot;Start&quot; when you are ready.
+<tw-storydata name="Math" startnode="1" creator="Twine" creator-version="2.9.2" format="Harlowe" format-version="3.3.9" ifid="12C108DC-4BEC-4ABB-AE3D-0E7A995D41D3" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar
+{
+	display: none;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Untitled Passage" tags="" position="700,275" size="100,100">Thank you for agreeing to participate in this experiment. On the following page, you will be given math questions to answer. Please answer as many questions as you would like. The more questions you answer, the more accurate of a data sample we can collect. Please enter your name below, and click &quot;Start&quot; when you are ready.
 
 Name: (input: bind $name, &quot;X===&quot;, &quot;&quot;)
 
@@ -30,17 +33,12 @@ Time: |amount&gt;[$time]
 
 [[End -&gt; End]]
 (live: 1s)[
-	(set: $counter to it + 1)
-    (set: $time to (floor:($counter / 1)))
-    (replace: ?amount)[$time]
-    (if: (num: $answer) is $random1 * $random2)[
-    	(set: $score to it + 1)
-        (set: $answer to &quot;&quot;)
-        (set: $random1 to (random: 3,12))
-		(set: $random2 to (random: 3,12))
-        (replace: ?currScore)[$score]
-        (replace: ?r1)[$random1]
-        (replace: ?r2)[$random2]
+	(set: $counter to it + 1)(set: $time to (floor:($counter / 1)))
+    (replace: ?amount)[$time]]
+(live: 0.01s)[
+	(if: (num: $answer) is $random1 * $random2)[
+    	(set: $score to it + 1)(set: $answer to &quot;&quot;)ty(set: $random1 to (random: 3,12))(set: $random2 to (random: 3,12))
+        (replace: ?currScore)[$score](replace: ?r1)[$random1](replace: ?r2)[$random2]
     ]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
